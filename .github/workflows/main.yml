@@ -19,12 +19,12 @@ jobs:
         with:
           channel: 'stable'
 
-      - name: Update Android SDK version
+      - name: Update Android SDK version to 36
         run: |
-          sed -i 's/compileSdkVersion.*/compileSdkVersion 34/g' android/app/build.gradle || true
-          sed -i 's/targetSdkVersion.*/targetSdkVersion 34/g' android/app/build.gradle || true
-          sed -i 's/compileSdk.*/compileSdk 34/g' android/app/build.gradle || true
-          sed -i 's/targetSdk.*/targetSdk 34/g' android/app/build.gradle || true
+          sed -i 's/compileSdkVersion.*/compileSdkVersion 36/g' android/app/build.gradle || true
+          sed -i 's/targetSdkVersion.*/targetSdkVersion 36/g' android/app/build.gradle || true
+          sed -i 's/compileSdk.*/compileSdk 36/g' android/app/build.gradle || true
+          sed -i 's/targetSdk.*/targetSdk 36/g' android/app/build.gradle || true
 
       - run: flutter pub get
       - run: flutter build apk --release
