@@ -8,9 +8,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+
+      - name: Update Android SDK version
+        run: |
+          sed -i 's/compileSdkVersion.*/compileSdkVersion 34/g' android/app/build.gradle || true
+          sed -i 's/targetSdkVersion.*/targetSdkVersion 34/g' android/app/build.gradle || true
+          sed -i 's/compileSdk.*/compileSdk 34/g' android/app/build.gradle || true
+          sed -i 's/targetSdk.*/targetSdk 34/g' android/app/build.gradle || true
+
       - run: flutter pub get
       - run: flutter build apk --release
       - uses: actions/upload-artifact@v4
