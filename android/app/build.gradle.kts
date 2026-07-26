@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.voice_our_iraq_app"
-    compileSdk = 36
+    compileSdk = 33
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
@@ -16,7 +16,7 @@ android {
     defaultConfig {
         applicationId = "com.example.voice_our_iraq_app"
         minSdk = flutter.minSdkVersion
-        targetSdk = 36
+        targetSdk = 33
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
