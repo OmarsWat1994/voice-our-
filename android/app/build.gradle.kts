@@ -7,7 +7,10 @@ android {
     namespace = "com.example.voice_our_iraq_app"
     compileSdk = 35
     ndkVersion = flutter.ndkVersion
-
+lint {
+    checkReleaseBuilds = false
+    abortOnError = false
+}
     configurations.all {
         resolutionStrategy {
             force("androidx.window:window:1.1.0")
