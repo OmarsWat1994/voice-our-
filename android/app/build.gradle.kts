@@ -7,10 +7,18 @@ android {
     namespace = "com.example.voice_our_iraq_app"
     compileSdk = 35
     ndkVersion = flutter.ndkVersion
-lint {
-    checkReleaseBuilds = false
-    abortOnError = false
-}
+
+    packagingOptions {
+        pickFirst 'lib/arm64-v8a/libagora_rtc_sdk.so'
+        pickFirst 'lib/armeabi-v7a/libagora_rtc_sdk.so'
+        pickFirst 'lib/x86_64/libagora_rtc_sdk.so'
+    }
+
+    lint {
+        checkReleaseBuilds = false
+        abortOnError = false
+    }
+
     configurations.all {
         resolutionStrategy {
             force("androidx.window:window:1.1.0")
