@@ -8,6 +8,13 @@ android {
     compileSdk = 33
     ndkVersion = flutter.ndkVersion
 
+    configurations.all {
+        resolutionStrategy {
+            force("androidx.window:window:1.1.0")
+            force("androidx.window.extensions.core:core:1.0.0")
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
