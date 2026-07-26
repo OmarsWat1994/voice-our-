@@ -9,10 +9,10 @@ android {
     ndkVersion = flutter.ndkVersion
 
     packaging {
-    jniLibs.pickFirsts.add("lib/arm64-v8a/libagora_rtc_sdk.so")
-    jniLibs.pickFirsts.add("lib/armeabi-v7a/libagora_rtc_sdk.so")
-    jniLibs.pickFirsts.add("lib/x86_64/libagora_rtc_sdk.so")
-}
+        jniLibs.pickFirsts.add("lib/arm64-v8a/libagora_rtc_sdk.so")
+        jniLibs.pickFirsts.add("lib/armeabi-v7a/libagora_rtc_sdk.so")
+        jniLibs.pickFirsts.add("lib/x86_64/libagora_rtc_sdk.so")
+    }
 
     lint {
         checkReleaseBuilds = false
