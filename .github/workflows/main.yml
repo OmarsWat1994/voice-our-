@@ -28,7 +28,7 @@ jobs:
       - run: flutter pub get
 
       - name: Accept Android SDK licenses
-        run: yes | sdkmanager --licenses
+        run: echo "y" | sudo ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --licenses || true
 
       - run: flutter build apk --release
 
