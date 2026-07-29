@@ -1,30 +1,17 @@
 plugins {
     id("com.android.application")
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
 }
 
 android {
     namespace = "com.example.voice_our_iraq_app"
-    compileSdk = 35
-    ndkVersion = flutter.ndkVersion
-
-    packaging {
-        jniLibs.pickFirsts.add("lib/arm64-v8a/libagora_rtc_sdk.so")
-        jniLibs.pickFirsts.add("lib/armeabi-v7a/libagora_rtc_sdk.so")
-        jniLibs.pickFirsts.add("lib/x86_64/libagora_rtc_sdk.so")
-    }
-
+    compileSdk = 36
     lint {
         checkReleaseBuilds = false
         abortOnError = false
     }
-
-    configurations.all {
-        resolutionStrategy {
-            force("androidx.window:window:1.1.0")
-            force("androidx.window.extensions.core:core:1.0.0")
-        }
-    }
+    ndkVersion = "30.0.15729638"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -32,20 +19,36 @@ android {
     }
 
     defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.example.voice_our_iraq_app"
-        minSdk = flutter.minSdkVersion
-        targetSdk = 35
+        // You can update the following values to match your application needs.
+        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        minSdk = 24
+        targetSdk = 36
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
 
     buildTypes {
         release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig = signingConfigs.getByName("debug")
         }
     }
 }
 
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+    }
+}
+
 flutter {
     source = "../.."
+}
+configurations.all {
+    resolutionStrategy {
+        force("androidx.core:core:1.12.0")
+    }
 }
